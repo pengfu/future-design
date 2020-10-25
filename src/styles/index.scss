@@ -1,4 +1,8 @@
 // particial 文件，只能被导入，没法单独编译
 // config
-@import 'variables';
-@import 'reboot';
+@import "variables";
+@import "reboot";
+@import "mixin";
+
+// Button
+@import "../components/Button/style";
