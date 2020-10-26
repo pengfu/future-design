@@ -1,8 +1,24 @@
 import React from "react";
 import { fireEvent, render } from "@testing-library/react";
-import Button from "./Button";
+import Button, { ButtonProps, ButtonSize, ButtonType } from "./Button";
 
-const defaultProps = {
+const defaultProps: ButtonProps = {
+  onClick: jest.fn(),
+};
+
+const buttonProps: ButtonProps = {
+  size: ButtonSize.Large,
+  btnType: ButtonType.Primary,
+  className: "klass",
+};
+
+const linkProps: ButtonProps = {
+  btnType: ButtonType.Link,
+  href: "http://www.baidu.com",
+};
+
+const disabledProps: ButtonProps = {
+  disabled: true,
   onClick: jest.fn(),
 };
 
@@ -24,5 +40,26 @@ describe("test Button Component", () => {
 
     fireEvent.click(element);
     expect(defaultProps.onClick).toHaveBeenCalled();
+  });
+
+  it("should render correct based on diffrent props", () => {
+    const wrapper = render(<Button {...buttonProps}>Nice</Button>);
+    const element = wrapper.getByText("Nice");
+    expect(element).toHaveClass("btn btn-primary btn-lg klass");
+  });
+
+  it("should render link when btnType equals link and href is set", () => {
+    const wrapper = render(<Button {...linkProps}>Link</Button>);
+    const element = wrapper.getByText("Link");
+    expect(element).toHaveClass("btn btn-link");
+    expect(element.tagName).toEqual("A");
+  });
+
+  it("should render disabled when disabled props is set", () => {
+    const wrapper = render(<Button {...disabledProps}>test</Button>);
+    const element = wrapper.getByText("test") as HTMLButtonElement;
+    fireEvent.click(element);
+    expect(disabledProps.onClick).not.toHaveBeenCalled();
+    expect(element.disabled).toBeTruthy();
   });
 });
