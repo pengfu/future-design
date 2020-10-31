@@ -20,11 +20,9 @@ function App() {
           test
         </Button>
         <Menu onSelect={onSelected} mode="vertical">
-          <MenuItem index={0}>item 1</MenuItem>
-          <MenuItem index={1}>item 2</MenuItem>
-          <MenuItem index={2} disabled>
-            item 3
-          </MenuItem>
+          <MenuItem>item 1</MenuItem>
+          <MenuItem>item 2</MenuItem>
+          <MenuItem disabled>item 3</MenuItem>
         </Menu>
         {/* <Menu onSelect={onSelected} >
           <MenuItem index={0}>item 1</MenuItem>
