@@ -19,13 +19,21 @@ function App() {
         <Button btnType={ButtonType.Link} href="www.baidu.com">
           test
         </Button>
-        <Menu onSelect={onSelected}>
+        <Menu onSelect={onSelected} mode="vertical">
           <MenuItem index={0}>item 1</MenuItem>
           <MenuItem index={1}>item 2</MenuItem>
           <MenuItem index={2} disabled>
             item 3
           </MenuItem>
         </Menu>
+        {/* <Menu onSelect={onSelected} >
+          <MenuItem index={0}>item 1</MenuItem>
+          <MenuItem index={1}>item 2</MenuItem>
+          <MenuItem index={2} disabled>
+            item 3
+          </MenuItem>
+        </Menu> */}
+        <a>learn react</a>
       </header>
     </div>
   );
