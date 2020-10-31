@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import classNames from "classnames";
 import { MenuItemProps } from "./menuItem";
 
-type MenuMode = "horizontal" | "vertical";
+export type MenuMode = "horizontal" | "vertical";
 type SelectedCallback = (selectedIndex: number) => void;
 export interface MenuProps {
   defaultIndex?: number;
@@ -15,6 +15,7 @@ export interface MenuProps {
 export interface IMenuContext {
   index: number;
   onSelected?: SelectedCallback;
+  mode?: MenuMode;
 }
 
 export const Context = createContext<IMenuContext>({ index: 0 });
@@ -36,6 +37,7 @@ const Menu: React.FC<MenuProps> = (props) => {
   const passedContext: IMenuContext = {
     index: activeIndex ? activeIndex : 0,
     onSelected: handleClick,
+    mode,
   };
   const renderChildren = () => {
     return React.Children.map(children, (child, index) => {
