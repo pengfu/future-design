@@ -3,7 +3,6 @@ import classNames from "classnames";
 
 import { MenuItemProps } from "./menuItem";
 import { Context } from "./menu";
-import { MenuMode } from "./menu";
 export interface SubMenuProps {
   title: string;
   index?: number;
@@ -41,9 +40,14 @@ const SubMenu: React.FC<SubMenuProps> = ({
     e.preventDefault();
     setOpened(!opened);
   };
+
+  let timer: any;
   const handleMouse = (toggle: boolean) => (e: React.MouseEvent) => {
     e.preventDefault();
-    setOpened(toggle);
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      setOpened(toggle);
+    }, 300);
   };
   const clickEvents =
     context.mode === "vertical"
