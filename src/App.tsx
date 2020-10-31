@@ -4,6 +4,7 @@ import React from "react";
 import Button, { ButtonType, ButtonSize } from "./components/Button/button";
 import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
+import SubMenu from "./components/Menu/subMenu";
 
 const onSelected = (index: number) => {
   alert(index);
@@ -19,11 +20,17 @@ function App() {
         <Button btnType={ButtonType.Link} href="www.baidu.com">
           test
         </Button>
-        <Menu onSelect={onSelected} mode="vertical">
+        <Menu onSelect={onSelected}>
           <MenuItem>item 1</MenuItem>
           <MenuItem>item 2</MenuItem>
+          <SubMenu title="SubMenuTitle">
+            <MenuItem>subItem 1</MenuItem>
+            <MenuItem>subItem 2</MenuItem>
+            <MenuItem disabled>subItem 3</MenuItem>
+          </SubMenu>
           <MenuItem disabled>item 3</MenuItem>
         </Menu>
+
         {/* <Menu onSelect={onSelected} >
           <MenuItem index={0}>item 1</MenuItem>
           <MenuItem index={1}>item 2</MenuItem>
