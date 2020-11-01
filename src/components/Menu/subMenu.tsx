@@ -16,7 +16,9 @@ const SubMenu: React.FC<SubMenuProps> = ({
   index,
 }) => {
   const context = useContext(Context);
-  const defaultOpenedSubMenu = context.defaultOpenedSubMenu as Array<string>;
+  const defaultOpenedSubMenu = (context.defaultOpenedSubMenu || []) as Array<
+    string
+  >;
   const classes = classNames("menu-item submenu-item", classNames, {
     "is-active": index === context.index,
   });
