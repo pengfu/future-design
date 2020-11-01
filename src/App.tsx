@@ -20,7 +20,11 @@ function App() {
         <Button btnType={ButtonType.Link} href="www.baidu.com">
           test
         </Button>
-        <Menu onSelect={onSelected}>
+        <Menu
+          onSelect={onSelected}
+          defaultOpenedSubMenu={["2"]}
+          mode="vertical"
+        >
           <MenuItem>item 1</MenuItem>
           <MenuItem>item 2</MenuItem>
           <SubMenu title="SubMenuTitle">
