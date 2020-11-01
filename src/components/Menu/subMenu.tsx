@@ -5,7 +5,7 @@ import { MenuItemProps } from "./menuItem";
 import { Context } from "./menu";
 export interface SubMenuProps {
   title: string;
-  index?: number;
+  index?: string;
   className?: string;
 }
 
@@ -27,7 +27,7 @@ const SubMenu: React.FC<SubMenuProps> = ({
     const childrenComponent = React.Children.map(children, (child, i) => {
       const ch = child as React.FunctionComponentElement<MenuItemProps>;
       if (ch.type.displayName === "menu-item") {
-        return React.cloneElement(ch, { index: i });
+        return React.cloneElement(ch, { index: `${index}-${i}` });
       } else {
         console.error("SubMenu 下面只能包含MenuItem");
       }

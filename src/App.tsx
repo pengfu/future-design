@@ -6,7 +6,7 @@ import Menu from "./components/Menu/menu";
 import MenuItem from "./components/Menu/menuItem";
 import SubMenu from "./components/Menu/subMenu";
 
-const onSelected = (index: number) => {
+const onSelected = (index: string) => {
   alert(index);
 };
 function App() {
